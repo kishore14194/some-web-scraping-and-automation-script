@@ -14,13 +14,6 @@ BASE_DIR_PATH = "/Users/kishore/Documents/Monkey_User_Comics/"
 DIR_PATH = "/Users/kishore/Documents/Monkey_User_Comics/{}.png"
 
 
-def check_existing_image(image):
-    check_existing_file = os.listdir(BASE_DIR_PATH)
-    if image + ".png" in check_existing_file:
-        return True
-    return False
-
-
 source = requests.get(MONKEY_USER_BASE_URL + "/toc/").text
 
 soup = BeautifulSoup(source, 'lxml')
@@ -48,8 +41,9 @@ for lin in link_list:
 
     if image:
 
-        existing_file = check_existing_image(image_name)
-        if existing_file:
+        is_existing_file = lambda x: True if image_name + ".png" in os.listdir(BASE_DIR_PATH) else False
+
+        if is_existing_file:
             print("Already exists - " + image_name)
             continue
 
