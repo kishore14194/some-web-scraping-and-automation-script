@@ -13,7 +13,6 @@ BASE_DIR_PATH = "/Users/kishore/Documents/Monkey_User_Comics/"
 
 DIR_PATH = "/Users/kishore/Documents/Monkey_User_Comics/{}.png"
 
-
 source = requests.get(MONKEY_USER_BASE_URL + "/toc/").text
 
 soup = BeautifulSoup(source, 'lxml')

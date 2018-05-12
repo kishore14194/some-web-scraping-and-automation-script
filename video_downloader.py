@@ -1,8 +1,8 @@
 import pafy
 import argparse
 
-# DIR_LOC = "/Users/kishore/Documents/Video/"
-DIR_LOC = None
+DIR_LOC = "/Users/kishore/Documents/Video/"
+# DIR_LOC = None
 
 def bytes_2_human_readable(number_of_bytes):
     """ Coverts bytes to human readable format"""
