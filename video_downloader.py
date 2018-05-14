@@ -2,11 +2,11 @@ import pafy
 import argparse
 import sys
 
-from video_dl_utils import format_resolution, bytes_2_human_readable, create_location,\
-    validate_video
+from video_dl_utils import format_resolution, bytes_2_human_readable, create_location, \
+    validate_video, fetch_video_playlist
 
 WEBM_FORMAT = 'webm'
-DEFAULT_VERSION = 9
+DEFAULT_VERSION = -1
 
 
 def main():
@@ -56,7 +56,7 @@ class DownloadYoutubeVideo:
 
     @property
     def available_version(self):
-        """ Fetch all the available version """
+        """ Fetch all the available video version """
         res_list = []
         for ind, s in enumerate(self.streams):
             res = format_resolution(s.resolution)
@@ -72,9 +72,11 @@ class DownloadYoutubeVideo:
         return "\n".join(res_list)
 
     def download_vid(self, location=None, version=None):
+        """Download the video with specified version and path"""
         location = create_location(location)
+
         if not version:
-            version = DEFAULT_VERSION
+            version = DEFAULT_VERSION  # By default the best version will be downloaded
 
         version = int(version)
 

@@ -2,6 +2,10 @@ import pafy
 import platform
 import os
 from pathlib import Path
+import re
+import urllib.request
+import urllib.error
+from collections import OrderedDict
 
 
 def bytes_2_human_readable(number_of_bytes):
@@ -37,6 +41,7 @@ def bytes_2_human_readable(number_of_bytes):
 
 
 def create_location(location):
+    """ Creates/Setup the specified location"""
     # TODO: Location for windows
     home = str(Path.home())
     default_location = home + "/Downloads/Videos"
@@ -60,11 +65,14 @@ def create_location(location):
 
 
 def format_resolution(resolution):
+    """Formatting the youtube video resolution to readable format
+    Example: 4K, 1080, 720, 480, 360"""
     res = (resolution.split('x'))[1]
     if int(res) > 1440:
         res = "4K"
 
     return str(res)
+
 
 def validate_video(url):
     try:
@@ -74,3 +82,43 @@ def validate_video(url):
 
     return True
 
+
+def fetch_video_playlist(url):
+    """ Fetch youtube video links from youtube playlist links """
+    sTUBE = ''
+    cPL = ''
+    amp = 0
+    final_url = []
+
+    if 'list=' in url:
+        eq = url.rfind('=') + 1
+        cPL = url[eq:]
+
+    else:
+        print('Incorrect Playlist.')
+        exit(1)
+
+    try:
+        yTUBE = urllib.request.urlopen(url).read()
+        sTUBE = str(yTUBE)
+    except urllib.error.URLError as e:
+        print(e.reason)
+
+    tmp_mat = re.compile(r'watch\?v=\S+?list=' + cPL)
+    mat = re.findall(tmp_mat, sTUBE)
+
+    if mat:
+
+        for PL in mat:
+            yPL = str(PL)
+            if '&' in yPL:
+                yPL_amp = yPL.index('&')
+            final_url.append('http://www.youtube.com/' + yPL[:yPL_amp])
+
+        all_url = list(OrderedDict.fromkeys(final_url))
+
+        return all_url
+
+    else:
+        print('No videos found.')
+        exit(1)
