@@ -26,8 +26,7 @@ def main():
     is_valid_video = validate_video(url)
 
     if not is_valid_video:
-        print("-- Entered video is not valid - " + url + " --")
-        sys.exit()
+        raise ValueError("The URL is not valid")
 
     download = DownloadYoutubeVideo(url)
     version = args.version
