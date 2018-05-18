@@ -1,12 +1,10 @@
 # Random-python-scripts
 
-Made these scripts either because I am lazy or I am bored or In between.
-
 All these scripts have common requirement file and it runs on python 3.5.
 
 So before running the command.
 
-Run: pip install -r requirement.txt
+Run: **pip install -r requirement.txt**
 
 ## Download images from Monkey User ##
 
