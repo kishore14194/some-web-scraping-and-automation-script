@@ -10,32 +10,32 @@ Run: pip install -r requirement.txt
 
 ## Download images from Monkey User ##
 
-### Description ###
+#### Description ####
 
-Monkey User (http://www.monkeyuser.com/) is one of the most funniest webcomic that can be related to developers.
-There are like hundreds of content that are posted in last two years.
-So, who wants to scroll all those when you can download and view them offline.
+Monkey User (http://www.monkeyuser.com/) is one of the funniest webcomic that can be related to developer's life.
+There are like hundreds of contents posted in last two years.
+So, who wants to scroll all those in website when you can view them offline.
 
-### command ###
+#### command ####
 
 python monkey_user.py
 
 
 ## Oatmeal Downloader ##
-### Description ###
-### command ###
+#### Description ####
+#### command ####
 
 
 ## Organise File ##
-### Description ###
-### command ###
+#### Description ####
+#### command ####
 
 
 ## Fetch RottenTomatoes most rated movies ##
-### Description ###
-### command ###
+#### Description ####
+#### command ####
 
 
 ## Video Downloader(For now only youtube videos can be downloaded) ##
-### Description ###
-### command ###
+#### Description ####
+#### command ####
